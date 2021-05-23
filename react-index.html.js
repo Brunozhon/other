@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom'; 
 
-class ErrorBoundary extends React.Component {
+class CatchError extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
@@ -12,14 +12,16 @@ class ErrorBoundary extends React.Component {
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
-    // You can also log the error to an error reporting service
-  }
-
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
+      return (
+        <div>
+          <h1>Something went wrong</h1>
+          <p>Bruno will be here to try to fix the error as soon as possible.</p>
+          <p>In some cases, it just needs to be reloaded. <button onClick={() => location.reload()}></button></p>
+        </div>
+      );
     }
 
     return this.props.children; 
@@ -29,11 +31,10 @@ class ErrorBoundary extends React.Component {
 class App extends React.Component {
   render() {
     return (
-      <div>
-      
+      <CatchError>
         <h1>Welcome to this page!</h1>
         <p>This is where I store my other stuff.</p>
-      </div>
+      </CatchError>
     );
   }
 }
