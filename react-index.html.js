@@ -19,7 +19,6 @@ class CatchError extends React.Component {
         <div>
           <h1>Something went wrong</h1>
           <p>Bruno will be here to try to fix the error as soon as possible.</p>
-          <p>In some cases, it just needs to be reloaded. <button onClick={() => location.reload()}></button></p>
         </div>
       );
     }
